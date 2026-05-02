@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BobaBliss — Premium Bubble Tea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+  <link rel="stylesheet" href="src/styles/components.css" />
+  <link rel="stylesheet" href="src/styles/animations.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">🧋</span>
+        <span class="logo-text">BobaBliss</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#hero" onclick="toggleMobileMenu()">Home</a></li>
+      <li><a href="#menu" onclick="toggleMobileMenu()">Menu</a></li>
+      <li><a href="#about" onclick="toggleMobileMenu()">About</a></li>
+      <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-blob blob-1"></div>
+      <div class="hero-blob blob-2"></div>
+      <div class="hero-blob blob-3"></div>
+      <div class="floating-dots"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge animate-fade-in">✨ Handcrafted with Love</div>
+      <h1 class="hero-title animate-slide-up">
+        Sip Into a World of
+        <em class="hero-highlight">Bliss</em>
+      </h1>
+      <p class="hero-subtitle animate-slide-up delay-1">
+        Premium bubble teas crafted with the finest ingredients. 
+        Each cup is an experience — customize your perfect drink.
+      </p>
+      <div class="hero-actions animate-slide-up delay-2">
+        <a href="#menu" class="btn btn-primary">
+          Explore Menu
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#about" class="btn btn-outline">Our Story</a>
+      </div>
+      <div class="hero-stats animate-slide-up delay-3">
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Flavors</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">10K+</span><span class="stat-label">Happy Sips</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Fresh Daily</span></div>
+      </div>
+    </div>
+    <div class="hero-visual animate-float">
+      <div class="hero-cup-wrapper">
+        <div class="hero-cup">
+          <div class="cup-liquid"></div>
+          <div class="cup-pearls">
+            <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+            <div class="pearl"></div><div class="pearl"></div>
+          </div>
+        </div>
+        <div class="cup-shadow"></div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Offerings</div>
+        <h2 class="section-title">Crafted for Every Taste</h2>
+        <p class="section-desc">Browse our carefully curated collection of premium beverages</p>
+      </div>
+
+      <!-- Catalog Tabs -->
+      <div class="catalog-tabs" id="catalogTabs">
+        <button class="tab-btn active" data-cat="milk-tea" onclick="filterCategory('milk-tea', this)">
+          <span class="tab-icon">🧋</span> Milk Tea
+        </button>
+        <button class="tab-btn" data-cat="tea" onclick="filterCategory('tea', this)">
+          <span class="tab-icon">🍵</span> Tea
+        </button>
+        <button class="tab-btn" data-cat="cheese" onclick="filterCategory('cheese', this)">
+          <span class="tab-icon">🧀</span> Cheese Foam
+        </button>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="productGrid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-image-card">
+            <img src="public/images/1.png" alt="Our Store" onerror="this.style.display='none'; this.parentElement.classList.add('img-placeholder')" />
+            <div class="img-fallback">🧋</div>
+          </div>
+          <div class="about-badge-float">
+            <span>🌿</span> Natural Ingredients
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-tag">Our Story</div>
+          <h2 class="section-title">Born from a Passion<br/>for <em>Real</em> Flavor</h2>
+          <p>BobaBliss was founded with one mission: to bring authentic, high-quality bubble tea to every corner. We source the finest teas, the freshest milk, and handcraft every topping in-house.</p>
+          <p>From classic milk teas to inventive cheese foam creations, every cup is made with intention — and a whole lot of love.</p>
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">🌱</div>
+              <div><strong>Natural Ingredients</strong><p>No artificial flavors or preservatives</p></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">⚡</div>
+              <div><strong>Made Fresh</strong><p>Every order prepared on demand</p></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🎨</div>
+              <div><strong>Customizable</strong><p>Hundreds of combinations possible</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-title">Visit Us or Order Online</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Location</h3>
+          <p>123 Boba Lane, Bubble District<br/>Ho Chi Minh City, Vietnam</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">⏰</div>
+          <h3>Hours</h3>
+          <p>Mon–Fri: 8am – 10pm<br/>Sat–Sun: 9am – 11pm</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <h3>Contact</h3>
+          <p>+84 90 123 4567<br/>hello@bobabliss.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">
+        <span class="logo-icon">🧋</span>
+        <span class="logo-text">BobaBliss</span>
+      </div>
+      <p class="footer-tagline">Every sip tells a story.</p>
+      <div class="footer-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">© 2025 BobaBliss. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="empty-icon">🧋</div>
+        <p>Your cart is empty</p>
+        <span>Add something delicious!</span>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="checkout()">
+        Place Order 🧋
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" id="productModal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="src/data/products.js"></script>
+  <script src="src/utils/helpers.js"></script>
+  <script src="src/components/cart.js"></script>
+  <script src="src/components/modal.js"></script>
+  <script src="src/components/menu.js"></script>
+  <script src="src/components/navbar.js"></script>
+  <script src="src/pages/app.js"></script>
+</body>
+</html>
